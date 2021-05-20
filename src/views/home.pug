@@ -8,4 +8,5 @@ block content
             h1.intro__title YouTrend
             p.intro__explanation 당신의 Youtube 이용 트렌드를 분석합니다.
         div.intro__login-box
-            button Youtube 계정 연결
+            form(method="POST")
+                button(action="submit") Youtube 계정 연결

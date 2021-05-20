@@ -8,12 +8,18 @@ Side project for developing API integration into NodeJS backend development
   - [x] Basic Env Setting
   - [x] Basic Backend Server Setting (+ MongoDB Integration)
 - [ ] Step 1. Landing Page + Authentication
-  - [ ] Basic Front-end
-    - [ ] Header (Not logged in)
-    - [ ] Big Title
-    - [ ] Google Login Button
+  - [x] Basic Front-end
+    - [x] Header (Not logged in)
+    - [x] Big Title
+    - [x] Google Login Button
   - [ ] Google OAuth Login
-    - [ ] User Database
+    - [ ] Basic Configurations
+    - [ ] Request verification
+    - [ ] Get response and handle failures
+    - [ ] Request access token and refresh token
+    - [ ] Test with getting channel name (`channels.list.mine`)
+    - [ ] Create User Schema to store basic identification infos
+    - [ ] Use Session to store the token
 - [ ] Step 2. Fetching Sample Dat from Youtube API for development
   - [ ] Fetching the data (+ estimating necessary data)
   - [ ] Fitting into model schema
