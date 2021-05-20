@@ -4,9 +4,9 @@ Side project for developing API integration into NodeJS backend development
 
 ## To-do
 
-- [ ] Step 0.
+- [x] Step 0.
   - [x] Basic Env Setting
-  - [ ] Basic Backend Server Setting (+ MongoDB Integration)
+  - [x] Basic Backend Server Setting (+ MongoDB Integration)
 - [ ] Step 1. Landing Page + Authentication
   - [ ] Basic Front-end
   - [ ] Google OAuth Login

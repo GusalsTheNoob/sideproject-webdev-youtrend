@@ -3,6 +3,7 @@ import express from "express";
 import session from "express-session";
 import flash from "express-flash";
 import morgan from "morgan";
+import mainRouter from "./routers/mainRouter";
 
 const app = express();
 const logger = morgan("dev");
@@ -21,5 +22,7 @@ app.use(
     })
 );
 app.use(flash());
+app.use("/", mainRouter);
+app.use("/static", express.static("assets"));
 
 export default app;
