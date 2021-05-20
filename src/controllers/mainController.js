@@ -28,7 +28,7 @@ export const getAuthSuccess = async (req, res) => {
     if (error) {
         console.log(error);
         // Failure
-        // TODO: flash message
+        req.flash("error", "❌ Authorization Error");
         return res.status(500).redirect("/");
     }
     // Success
@@ -54,7 +54,7 @@ export const getAuthSuccess = async (req, res) => {
     } catch (error) {
         console.log(error);
         // Failure
-        // TODO: flash message
+        req.flash("error", "❌ Access Token Request Error");
         return res.status(500).redirect("/");
     }
     // Disect Response
@@ -66,7 +66,7 @@ export const getAuthSuccess = async (req, res) => {
     if (tokenError) {
         console.log(tokenError);
         // Failure
-        // TODO: Flash Message
+        req.flash("error", "❌ Access Token Request Error");
         return res.status(500).redirect("/");
     }
     // Success
@@ -96,7 +96,6 @@ export const getAuthSuccess = async (req, res) => {
         }
     } = channelResponse.items[0];
     const userResponse = await User.find({ channelId });
-    // console.log(userResponse);
     // 1-2. Or create a new one
     let currentUser;
     if (userResponse.length === 0) {
@@ -109,7 +108,9 @@ export const getAuthSuccess = async (req, res) => {
                 channelThumbnailUrl
             });
         } catch (error) {
+            req.flash("error", "❌ User DB Creation Error");
             console.log(error);
+            return res.status(500).redirect("/");
         }
     } else {
         currentUser = userResponse[0];
@@ -117,7 +118,8 @@ export const getAuthSuccess = async (req, res) => {
     // 2. session change
     req.session.loggedIn = true;
     req.session.user = currentUser;
-    return res.redirect("/user");
+    req.flash("info", "✔️ Log In Successful!");
+    return res.status(200).redirect("/user");
 };
 
 export const getLogout = (req, res) => {

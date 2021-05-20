@@ -56,3 +56,36 @@ body {
     }
   }
 }
+
+.message {
+  max-width: 200px;
+  padding: 10px 20px;
+  margin: 0 auto;
+  border-radius: 10000px;
+  overflow-wrap: break-word;
+  position: fixed;
+  top: 90px;
+  left: 0;
+  right: 0;
+  z-index: 3000;
+  text-align: center;
+  font-family: $regularFont;
+  font-size: $small;
+  animation: goAway 0.5s ease-in-out forwards;
+  animation-delay: 5s;
+  background-color: $whitetext;
+  color: $darktext;
+  &.error {
+    background-color: tomato;
+    color: white;
+  }
+}
+
+@keyframes goAway {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

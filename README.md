@@ -12,7 +12,7 @@ Side project for developing API integration into NodeJS backend development
     - [x] Header (Not logged in)
     - [x] Big Title
     - [x] Google Login Button
-  - [ ] Google OAuth Login
+  - [x] Google OAuth Login
     - [x] Basic Configurations
     - [x] Request verification
     - [x] Get response and handle failures
@@ -20,6 +20,8 @@ Side project for developing API integration into NodeJS backend development
     - [x] Test with getting channel name (`channels.list.mine`)
     - [x] Create User Schema to store basic identification infos
     - [x] Use Session to store the token
+  - [x] Log Out
+  - [ ] Flash Messages
 - [ ] Step 2. Fetching Sample Data from Youtube API for development
   - [ ] Fetching the data (+ estimating necessary data)
   - [ ] Fitting into model schema
