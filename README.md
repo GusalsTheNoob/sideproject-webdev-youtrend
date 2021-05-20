@@ -17,7 +17,7 @@ Side project for developing API integration into NodeJS backend development
     - [x] Request verification
     - [x] Get response and handle failures
     - [x] Request access token and refresh token
-    - [ ] Test with getting channel name (`channels.list.mine`)
+    - [x] Test with getting channel name (`channels.list.mine`)
     - [ ] Create User Schema to store basic identification infos
     - [ ] Use Session to store the token
 - [ ] Step 2. Fetching Sample Data from Youtube API for development

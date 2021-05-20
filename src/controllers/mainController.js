@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import User from "../models/User";
 
 export const getHome = (req, res) => {
     return res.status(200).render("home");
@@ -12,7 +13,7 @@ export const postHome = async (req, res) => {
         redirect_uri: "http://localhost:4000/auth-success",
         response_type: "code",
         scope: "https://www.googleapis.com/auth/youtube.readonly",
-        access_type: "online",
+        access_type: "offline",
     };
     const targetUrl = `${baseURL}?${new URLSearchParams(requestParams).toString()}`;
     // console.log(targetUrl);
@@ -35,7 +36,7 @@ export const getAuthSuccess = async (req, res) => {
     // Request access/refresh token
     let tokenResponse;
     try {
-        const requestParams = {
+        const tokenRequestParams = {
             code,
             client_id: process.env.OAUTH_CLIENT_ID,
             client_secret: process.env.OAUTH_CLIENT_SECRET,
@@ -48,11 +49,14 @@ export const getAuthSuccess = async (req, res) => {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                 },
-                body: new URLSearchParams(requestParams).toString(),
+                body: new URLSearchParams(tokenRequestParams).toString(),
             })
         ).json();
     } catch (error) {
         console.log(error);
+        // Failure
+        // TODO: flash message
+        return res.status(500).redirect("/");
     }
     console.log(tokenResponse);
     // Disect Response
@@ -70,5 +74,54 @@ export const getAuthSuccess = async (req, res) => {
     // Success
     console.log(`access token: ${access_token}`);
     console.log(`refresh_token: ${refresh_token}`);
+    // TEST: Getting the user's channel name
+    let channelResponse;
+    channelResponse = await (
+        await fetch("https://www.googleapis.com/youtube/v3/channels?part=snippet&mine=true", {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${access_token}`
+            }
+        })
+    ).json();
+    console.log(channelResponse.items[0]);
+    // TEST ENDS HERE
+    // 1. create or fetch user
+    // 1-1. find whether this user has once already registered
+    const {
+        id: channelId,
+        snippet: {
+            title: channelName,
+            thumbnails: {
+                default: {
+                    url: channelThumbnailUrl,
+                }
+            }
+        }
+    } = channelResponse.items[0];
+    const userResponse = await User.find({ channelId });
+    // console.log(userResponse);
+    // 1-2. Or create a new one
+    let currentUser;
+    if (userResponse.length === 0) {
+        try {
+            currentUser = await User.create({
+                channelId,
+                accessToken: access_token,
+                refreshToken: refresh_token,
+                channelName,
+                channelThumbnailUrl
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    } else {
+        currentUser = userResponse[0];
+    }
+    console.log(currentUser);
+    // 1-3. And then get the user object 
+    // 2. session change
+    // 2-1. loggedIn
+    // 2-2. User data
     return res.redirect("/user");
 };
