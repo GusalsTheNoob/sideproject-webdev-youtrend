@@ -5,6 +5,9 @@
 // Components
 @import "./components/header.scss";
 
+// Screens
+@import "./screens/home.scss";
+
 // Fonts
 
 @font-face {
@@ -36,16 +39,19 @@ body {
   justify-content: center;
   align-items: stretch;
   font-family: $regularFont;
+  font-size: $plain;
   text-align: center;
+  word-break: keep-all;
+  line-height: 140%;
   background-color: $background;
-  color: $darktext;
+  color: $whitetext;
   .container {
     width: 100%;
     max-width: 380px;
     height: 100%;
     // border: 1px solid red;
     main {
-      height: 200%;
+      height: 100%;
       padding-top: 60px;
     }
   }

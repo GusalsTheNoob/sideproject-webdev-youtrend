@@ -1,0 +1,33 @@
+.intro {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .intro__picture-box {
+    margin-bottom: 40px;
+    .intro__picture {
+      width: 125px;
+    }
+  }
+  .intro__text-box {
+    margin-bottom: 50px;
+    .intro__title {
+      margin-bottom: 15px;
+      font-size: 30px;
+      font-family: $boldFont;
+    }
+  }
+  .intro__login-box {
+    button {
+      width: 240px;
+      height: 50px;
+      border: none;
+      border-radius: 25px;
+      background-color: $primary;
+      color: $whitetext;
+      font-family: $regularFont;
+      font-size: 17px;
+    }
+  }
+}

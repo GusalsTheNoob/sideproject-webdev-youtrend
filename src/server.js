@@ -24,5 +24,6 @@ app.use(
 app.use(flash());
 app.use("/", mainRouter);
 app.use("/static", express.static("assets"));
+app.use("/uploads", express.static("uploads"));
 
 export default app;
