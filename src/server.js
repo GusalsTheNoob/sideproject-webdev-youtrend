@@ -1,5 +1,6 @@
 import MongoStore from "connect-mongo";
 import express from "express";
+import session from "express-session";
 import flash from "express-flash";
 import morgan from "morgan";
 
