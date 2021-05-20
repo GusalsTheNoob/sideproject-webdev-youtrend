@@ -4,6 +4,7 @@ import session from "express-session";
 import flash from "express-flash";
 import morgan from "morgan";
 import mainRouter from "./routers/mainRouter";
+import userRouter from "./routers/userRouter";
 
 const app = express();
 const logger = morgan("dev");
@@ -23,6 +24,7 @@ app.use(
 );
 app.use(flash());
 app.use("/", mainRouter);
+app.use("/user", userRouter);
 app.use("/static", express.static("assets"));
 app.use("/uploads", express.static("uploads"));
 

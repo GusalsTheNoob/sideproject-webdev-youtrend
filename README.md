@@ -13,14 +13,14 @@ Side project for developing API integration into NodeJS backend development
     - [x] Big Title
     - [x] Google Login Button
   - [ ] Google OAuth Login
-    - [ ] Basic Configurations
-    - [ ] Request verification
-    - [ ] Get response and handle failures
-    - [ ] Request access token and refresh token
+    - [x] Basic Configurations
+    - [x] Request verification
+    - [x] Get response and handle failures
+    - [x] Request access token and refresh token
     - [ ] Test with getting channel name (`channels.list.mine`)
     - [ ] Create User Schema to store basic identification infos
     - [ ] Use Session to store the token
-- [ ] Step 2. Fetching Sample Dat from Youtube API for development
+- [ ] Step 2. Fetching Sample Data from Youtube API for development
   - [ ] Fetching the data (+ estimating necessary data)
   - [ ] Fitting into model schema
 - [ ] Step 3. Executing & Analysis
