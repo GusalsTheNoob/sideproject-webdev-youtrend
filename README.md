@@ -9,6 +9,9 @@ Side project for developing API integration into NodeJS backend development
   - [x] Basic Backend Server Setting (+ MongoDB Integration)
 - [ ] Step 1. Landing Page + Authentication
   - [ ] Basic Front-end
+    - [ ] Header (Not logged in)
+    - [ ] Big Title
+    - [ ] Google Login Button
   - [ ] Google OAuth Login
     - [ ] User Database
 - [ ] Step 2. Fetching Sample Dat from Youtube API for development
