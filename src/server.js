@@ -5,6 +5,7 @@ import flash from "express-flash";
 import morgan from "morgan";
 import mainRouter from "./routers/mainRouter";
 import userRouter from "./routers/userRouter";
+import { localsMiddleware } from "./middlewares";
 
 const app = express();
 const logger = morgan("dev");
@@ -23,6 +24,7 @@ app.use(
     })
 );
 app.use(flash());
+app.use(localsMiddleware);
 app.use("/", mainRouter);
 app.use("/user", userRouter);
 app.use("/static", express.static("assets"));

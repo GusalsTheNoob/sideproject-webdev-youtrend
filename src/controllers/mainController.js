@@ -16,7 +16,6 @@ export const postHome = async (req, res) => {
         access_type: "offline",
     };
     const targetUrl = `${baseURL}?${new URLSearchParams(requestParams).toString()}`;
-    // console.log(targetUrl);
     return res.redirect(targetUrl); 
 };
 
@@ -26,7 +25,7 @@ export const getAuthSuccess = async (req, res) => {
         code,
         error
     } = req.query;
-    if (error) { // content: "access_denied"
+    if (error) {
         console.log(error);
         // Failure
         // TODO: flash message
@@ -58,7 +57,6 @@ export const getAuthSuccess = async (req, res) => {
         // TODO: flash message
         return res.status(500).redirect("/");
     }
-    console.log(tokenResponse);
     // Disect Response
     const {
         access_token,
@@ -72,8 +70,6 @@ export const getAuthSuccess = async (req, res) => {
         return res.status(500).redirect("/");
     }
     // Success
-    console.log(`access token: ${access_token}`);
-    console.log(`refresh_token: ${refresh_token}`);
     // TEST: Getting the user's channel name
     let channelResponse;
     channelResponse = await (
@@ -118,10 +114,8 @@ export const getAuthSuccess = async (req, res) => {
     } else {
         currentUser = userResponse[0];
     }
-    console.log(currentUser);
-    // 1-3. And then get the user object 
     // 2. session change
-    // 2-1. loggedIn
-    // 2-2. User data
+    req.session.loggedIn = true;
+    req.session.user = currentUser;
     return res.redirect("/user");
 };

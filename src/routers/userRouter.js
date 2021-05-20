@@ -1,7 +1,9 @@
 import express from "express";
+import { getUser } from "../controllers/userController";
+import { protectorMiddleware } from "../middlewares";
 
 const userRouter = express.Router();
 
-userRouter.route("/").get((req, res) => { return res.send("Success! This will be a dashboard.") });
+userRouter.route("/").all(protectorMiddleware).get(getUser);
 
 export default userRouter;
