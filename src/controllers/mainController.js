@@ -119,3 +119,8 @@ export const getAuthSuccess = async (req, res) => {
     req.session.user = currentUser;
     return res.redirect("/user");
 };
+
+export const getLogout = (req, res) => {
+    req.session.destroy();
+    return res.status(200).redirect("/");
+}

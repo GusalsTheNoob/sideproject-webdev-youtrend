@@ -3,6 +3,10 @@ header.header
         h1 YouTrend
     nav.header__nav
         ul 
-            a(href="")
-                li.header__nav-menu LOG IN
+            if (!loggedIn)
+                a(href="/")
+                    li.header__nav-menu ABOUT
+            else
+                a(href="/logout")
+                    li.header__nav-menu LOG OUT
     div.header__background
