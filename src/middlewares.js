@@ -9,7 +9,7 @@ export const protectorMiddleware = (req, res, next) => {
     if (req.session.loggedIn) {
       return next();
     } else {
-      // req.flash("error", "먼저 로그인하세요");
+      req.flash("error", "❌ 먼저 로그인하세요.");
       return res.redirect("/");
     }
 };
@@ -18,7 +18,7 @@ export const protectorMiddleware = (req, res, next) => {
     if (!req.session.loggedIn) {
       return next();
     } else {
-      // req.flash("error", "Not authorized");
+      req.flash("error", "❌ 잘못된 접근입니다.");
       return res.redirect("/");
     }
 };

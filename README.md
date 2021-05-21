@@ -21,7 +21,11 @@ Side project for developing API integration into NodeJS backend development
     - [x] Create User Schema to store basic identification infos
     - [x] Use Session to store the token
   - [x] Log Out
-  - [ ] Flash Messages
+  - [x] Flash Messages
+  - [ ] Reusing Behavior
+    - [ ] Access Token Reuse
+    - [ ] Token Renewal
+    - [ ] Regular Update (24h)
 - [ ] Step 2. Fetching Sample Data from Youtube API for development
   - [ ] Fetching the data (+ estimating necessary data)
   - [ ] Fitting into model schema
