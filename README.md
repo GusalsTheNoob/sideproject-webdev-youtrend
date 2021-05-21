@@ -23,11 +23,21 @@ Side project for developing API integration into NodeJS backend development
   - [x] Log Out
   - [x] Flash Messages
   - [ ] Reusing Behavior
-    - [ ] Access Token Reuse
-    - [ ] Token Renewal
-    - [ ] Regular Update (24h)
+    - [x] Access Token Reuse
+    - [ ] Token Renewal (Use middleware to findOne)
 - [ ] Step 2. Fetching Sample Data from Youtube API for development
   - [ ] Fetching the data (+ estimating necessary data)
+    - [ ] Channel Data
+    - [ ] Watch history (With all video info populated)
+      - [ ] `Channel: list`(Watch History): `items` -> `contentDetails` -> `watchHistory` (1)
+      - [ ] `Playlistitems: list`(List of Videos): `items` -> [`snippet` -> `title`, `channelId`, `channelTitle`, `thumbnails`, `videoId`, `publishedAt`(=watch time)] (1)
+      - [ ] `Channel: list`(Video Owner Thumbnail + additional Info) (1)
+    - [ ] Subscription (With all channel info populated)
+      - [ ] `Subscriptions: list`(List of subscribed channels): `items` -> [`snippet` -> `channelId`, `url`, `title`] (1)
+      - [ ] `Channel: list`(Uploaded Playlist): `items` -> `contentDetails` -> `uploads` (1)
+      - [ ] `Playlistitems: list`(List of Videos): `items` -> [`snippet` -> `title`, `channelId`, `channelTitle`, `thumbnails`, `videoId`, `publishedAt`(=watch time)] (1)
+    - [ ] Activity Log (With all video info & channel info populated)
+      - [ ] `Activities: list`(List of Activities): `items` -> [`contentDetails`, `snippets`] (1)
   - [ ] Fitting into model schema
 - [ ] Step 3. Executing & Analysis
   - [ ] Keyword Trend

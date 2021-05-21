@@ -107,16 +107,6 @@ export const getAuthSuccess = async (req, res) => {
             }
         }
     } = channelResponse.items[0];
-    // find whether this user has once already registered
-    let userResponse;
-    try {
-        userResponse = await User.find({ channelId });
-    } catch (error) {
-        console.log(error);
-        req.flash("error", "❌ User DB Search Error");
-        return res.status(500).redirect("/");
-    }
-    // Or create a new one
     let currentUser;
     try {
         const dataObj =  {
